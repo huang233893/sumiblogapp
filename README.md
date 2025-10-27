@@ -1,6 +1,6 @@
 # 酥米的小站 - React Native跨平台Web套壳应用
 
-这是一个使用React Native和Expo开发的跨平台Web套壳应用，用于展示酥米的个人网站内容。
+这是一个使用React Native和Expo开发的跨平台酥米的个人网站App。
 
 ## 功能特点
 
@@ -35,7 +35,8 @@ npm run ios
 ```
 
 ### Android端
-```bash
+```powershell
+powershell -ExecutionPolicy Bypass -Command "npx expo prebuild --platform android"
 npm run android
 ```
 
@@ -67,6 +68,3 @@ sumiblogapph5/
 ## 注意事项
 
 - 确保设备可以访问 https://www.sumi233.top
-- Web端可能会有跨域限制，需要网站端设置相应的CORS策略
-- iOS端需要在Info.plist中配置允许访问的域名（如需发布）
-- Android端需要在AndroidManifest.xml中配置网络权限（如需发布）
