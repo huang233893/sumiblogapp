@@ -99,10 +99,10 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file(findProperty('expo.keystore') ?: 'debug.keystore')
-            storePassword findProperty('expo.keystorePassword') ?: 'android'
-            keyAlias findProperty('expo.keyAlias') ?: 'androiddebugkey'
-            keyPassword findProperty('expo.keyPassword') ?: 'android'
+            storeFile file(findProperty('expo.keystore') ?: 'sumiapp.keystore')
+            storePassword findProperty('expo.keystorePassword') ?: 'huang2007'
+            keyAlias findProperty('expo.keyAlias') ?: 'sumiapp'
+            keyPassword findProperty('expo.keyPassword') ?: 'huang2007'
         }
     }
     buildTypes {
