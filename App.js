@@ -20,6 +20,17 @@ function MainTabs() {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showAboutInfoModal, setShowAboutInfoModal] = useState(false);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
+  
+  // 图标渲染函数
+  const renderIcon = (isDarkMode, darkSvg, lightSvg, color, size) => {
+    return (
+      <Image 
+        source={isDarkMode ? darkSvg : lightSvg}
+        style={[styles.iconImage, { width: size, height: size, tintColor: color }]}
+        resizeMode="contain"
+      />
+    );
+  };
 
   // 处理刷新操作
   const handleRefresh = () => {
@@ -49,14 +60,12 @@ function MainTabs() {
           name="Home" 
           options={{ 
             tabBarLabel: '主页',
-            tabBarIcon: ({ color, size }) => (
-              <Image 
-                source={isDarkMode ? 
-                  require('./assets/home-dark.svg') : 
-                  require('./assets/home-light.svg')} 
-                style={[styles.iconImage, { width: size, height: size, tintColor: color }]} 
-                resizeMode="contain"
-              />
+            tabBarIcon: ({ color, size }) => renderIcon(
+              isDarkMode, 
+              require('./assets/home-dark.svg'), 
+              require('./assets/home-light.svg'),
+              color, 
+              size
             )
           }} 
         >
@@ -66,14 +75,12 @@ function MainTabs() {
           name="Archive" 
           options={{ 
             tabBarLabel: '归档',
-            tabBarIcon: ({ color, size }) => (
-              <Image 
-                source={isDarkMode ? 
-                  require('./assets/archive-dark.svg') : 
-                  require('./assets/archive-light.svg')} 
-                style={[styles.iconImage, { width: size, height: size, tintColor: color }]} 
-                resizeMode="contain"
-              />
+            tabBarIcon: ({ color, size }) => renderIcon(
+              isDarkMode, 
+              require('./assets/archive-dark.svg'), 
+              require('./assets/archive-light.svg'),
+              color, 
+              size
             )
           }} 
         >
@@ -83,14 +90,12 @@ function MainTabs() {
           name="Message" 
           options={{ 
             tabBarLabel: '留言板',
-            tabBarIcon: ({ color, size }) => (
-              <Image 
-                source={isDarkMode ? 
-                  require('./assets/message-dark.svg') : 
-                  require('./assets/message-light.svg')} 
-                style={[styles.iconImage, { width: size, height: size, tintColor: color }]} 
-                resizeMode="contain"
-              />
+            tabBarIcon: ({ color, size }) => renderIcon(
+              isDarkMode, 
+              require('./assets/message-dark.svg'), 
+              require('./assets/message-light.svg'),
+              color, 
+              size
             )
           }} 
         >
@@ -108,14 +113,12 @@ function MainTabs() {
             )}
             options={{ 
               tabBarLabel: '更多',
-              tabBarIcon: ({ color, size }) => (
-                <Image 
-                  source={isDarkMode ? 
-                    require('./assets/about-dark.svg') : 
-                    require('./assets/about-light.svg')} 
-                  style={[styles.iconImage, { width: size, height: size, tintColor: color }]} 
-                  resizeMode="contain"
-                />
+              tabBarIcon: ({ color, size }) => renderIcon(
+                isDarkMode, 
+                require('./assets/about-dark.svg'), 
+                require('./assets/about-light.svg'),
+                color, 
+                size
               )
             }} 
           />

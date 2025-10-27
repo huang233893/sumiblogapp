@@ -147,8 +147,8 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   menuButtonText: {
-    fontSize: 24,
-    lineHeight: 24,
+    fontSize: 18,
+    lineHeight: 18,
     fontWeight: '300',
   },
   scrollContent: {

@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Switch, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Switch, TouchableOpacity, ScrollView, Alert, Platform } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
-import { clearCache, clearCookies, clearCacheAndCookies } from '../components/WebViewComponent';
 
 const SettingsScreen = ({ navigation, onClose, onOpenAboutInfo }) => {
   const { theme, isDarkMode, followSystem, toggleTheme, toggleFollowSystem } = useTheme();
@@ -15,7 +14,13 @@ const SettingsScreen = ({ navigation, onClose, onOpenAboutInfo }) => {
         { text: '取消', style: 'cancel' },
         { 
           text: '确定', 
-          onPress: clearCache,
+          onPress: () => {
+            if (global.clearCache) {
+              global.clearCache();
+            } else {
+              Alert.alert('提示', '清除缓存功能暂不可用');
+            }
+          },
           style: 'destructive'
         }
       ]
@@ -31,7 +36,13 @@ const SettingsScreen = ({ navigation, onClose, onOpenAboutInfo }) => {
         { text: '取消', style: 'cancel' },
         { 
           text: '确定', 
-          onPress: clearCookies,
+          onPress: () => {
+            if (global.clearCookies) {
+              global.clearCookies();
+            } else {
+              Alert.alert('提示', '清除Cookie功能暂不可用');
+            }
+          },
           style: 'destructive'
         }
       ]

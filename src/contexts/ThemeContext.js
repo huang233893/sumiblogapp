@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useColorScheme } from 'react-native';
+import StorageService, { STORAGE_KEYS } from '../services/StorageService';
 
 // 创建主题上下文
 const ThemeContext = createContext();
@@ -39,6 +40,26 @@ export const ThemeProvider = ({ children }) => {
   const systemColorScheme = useColorScheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [followSystem, setFollowSystem] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // 从存储加载主题设置
+  useEffect(() => {
+    const loadThemeSettings = async () => {
+      try {
+        const savedSettings = await StorageService.getThemeSettings();
+        if (savedSettings) {
+          setFollowSystem(savedSettings.followSystem);
+          setIsDarkMode(savedSettings.isDarkMode);
+        }
+      } catch (error) {
+        console.error('加载主题设置失败:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadThemeSettings();
+  }, []);
   
   // 当跟随系统或系统主题变化时更新主题
   useEffect(() => {
@@ -46,6 +67,16 @@ export const ThemeProvider = ({ children }) => {
       setIsDarkMode(systemColorScheme === 'dark');
     }
   }, [followSystem, systemColorScheme]);
+  
+  // 保存主题设置到存储
+  useEffect(() => {
+    if (!isLoading) {
+      StorageService.saveThemeSettings({
+        followSystem,
+        isDarkMode
+      });
+    }
+  }, [followSystem, isDarkMode, isLoading]);
   
   // 当前使用的主题
   const currentTheme = isDarkMode ? darkTheme : lightTheme;
@@ -73,6 +104,7 @@ export const ThemeProvider = ({ children }) => {
     followSystem,
     toggleTheme,
     toggleFollowSystem,
+    isLoading,
   };
   
   return (

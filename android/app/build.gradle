@@ -99,10 +99,12 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file(findProperty('expo.keystore') ?: 'sumiapp.keystore')
-            storePassword findProperty('expo.keystorePassword') ?: 'huang2007'
-            keyAlias findProperty('expo.keyAlias') ?: 'sumiapp'
-            keyPassword findProperty('expo.keyPassword') ?: 'huang2007'
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
         }
     }
     buildTypes {
@@ -110,7 +112,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            // Using configured keystore from gradle.properties
+            // 使用release签名配置
             signingConfig signingConfigs.release
             shrinkResources (findProperty('android.enableShrinkResourcesInReleaseBuilds')?.toBoolean() ?: false)
             minifyEnabled enableProguardInReleaseBuilds
