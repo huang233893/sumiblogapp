@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "酥米的小站",
+    "slug": "sumiblogapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "icon": "assets/logo/logo.png"
+    },
+    "android": {
+      "package": "com.sumiblog.app",
+      "icon": "assets/logo/logo.png",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff",
+        "foregroundImage": "assets/logo/logo.png"
+      }
+    },
+    "web": {},
+    "plugins": []
+  }
+}
