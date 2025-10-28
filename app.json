@@ -22,6 +22,12 @@
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
         "foregroundImage": "assets/logo/logo.png"
+      },
+      "buildConfig": {
+        "keystore": "sumiapp.keystore",
+        "keyAlias": "sumiapp",
+        "keystorePassword": "android",
+        "keyPassword": "huang2007"
       }
     },
     "web": {},

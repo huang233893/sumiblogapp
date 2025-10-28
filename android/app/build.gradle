@@ -106,13 +106,12 @@ android {
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
         }
-    }
+        }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
         release {
-            // 使用release签名配置
             signingConfig signingConfigs.release
             shrinkResources (findProperty('android.enableShrinkResourcesInReleaseBuilds')?.toBoolean() ?: false)
             minifyEnabled enableProguardInReleaseBuilds
