@@ -19,8 +19,8 @@ buildscript {
     dependencies {
         classpath('com.android.tools.build:gradle:7.4.2')
         classpath('com.facebook.react:react-native-gradle-plugin')
-        // 添加expo模块gradle插件
-        classpath('expo:expo-module-gradle-plugin')
+        // 添加expo模块gradle插件，使用与Expo SDK 49兼容的版本
+        classpath('expo:expo-module-gradle-plugin:~1.7.0')
     }
 }
 
